@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'scp target/spring-boot-web-0.0.1-SNAPSHOT.jar ubuntu@15.207.71.106:/home/ubuntu/'
-                sh 'ssh ubuntu@15.207.71.106 "java -jar /home/ubuntu/spring-boot-web-0.0.1-SNAPSHOT.jar"'
+                sh 'scp target/spring-boot-web-0.0.1-SNAPSHOT.jar ubuntu@3.109.158.235:/home/ubuntu/'
+                sh 'ssh ubuntu@3.109.158.235 "java -jar /home/ubuntu/spring-boot-web-0.0.1-SNAPSHOT.jar"'
             }
         }
     }
