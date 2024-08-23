@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                url: 'https://github.com/gvjkumar2004/springbootwebapp1.git'
+                git url: 'https://github.com/gvjkumar2004/springbootwebapp1.git'
             }
         }
         stage('Build') {
@@ -13,10 +13,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-              {
-                    sh 'scp target/spring-boot-web-0.0.1-SNAPSHOT.jar ubuntu@3.110.221.14:/home/ec2-user/'
-                    sh 'ssh ubuntu@3.110.221.14 "java -jar /home/ec2-user/spring-boot-web-0.0.1-SNAPSHOT.jar"'
-                }
+                sh 'scp target/spring-boot-web-0.0.1-SNAPSHOT.jar ubuntu@3.110.221.14:/home/ubuntu/'
+                sh 'ssh ubuntu@3.110.221.14 "java -jar /home/ubuntu/spring-boot-web-0.0.1-SNAPSHOT.jar"'
             }
         }
     }
