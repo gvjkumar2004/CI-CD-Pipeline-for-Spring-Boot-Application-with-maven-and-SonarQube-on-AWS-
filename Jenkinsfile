@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DEPLOY_SERVER = 'ubuntu@43.205.255.206'
-        SONARQUBE_SERVER = 'Sonarqube'  // This should match the name configured in Jenkins
+        SONARQUBE_SERVER = 'sonarqube'  // This should match the name configured in Jenkins
     }
     stages {
         stage('Checkout') {
