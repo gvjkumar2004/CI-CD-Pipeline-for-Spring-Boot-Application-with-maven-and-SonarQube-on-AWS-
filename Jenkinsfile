@@ -1,7 +1,8 @@
 pipeline {
     agent any
     environment {
-        DEPLOY_SERVER = 'ubuntu@13.201.30.89'
+        DEPLOY_SERVER = 'ubuntu@43.205.255.206'
+        SONARQUBE_SERVER = 'Sonarqube'  // This should match the name configured in Jenkins
     }
     stages {
         stage('Checkout') {
@@ -12,6 +13,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean package'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv("${SONARQUBE_SERVER}") {
+                    sh 'mvn sonar:sonar'
+                }
             }
         }
         stage('Deploy') {
